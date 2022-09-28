@@ -30,24 +30,24 @@ DEBUG = False
 
 DATASETS = [
     # ("pubmed_test", PubmedDataset, {"file_path": "data/pubmed-release/test.txt"}),
-    ("PLOS_test", PubmedDataset, {"file_path": "data/PLOS/test.txt"}),
-    # ("eLife", PubmedDataset, {"file_path": "data/eLife/test.txt"}),
+    # ("PLOS_test", PubmedDataset, {"file_path": "data/PLOS/test.txt"}),
+    ("eLife_test", PubmedDataset, {"file_path": "data/eLife/test.txt"}),
 ]
 EMBEDDERS = [
-    ("rand_200", RandEmbedder, {"dim": 200}),
+    # ("rand_200", RandEmbedder, {"dim": 200}),
     ("biomed_w2v", W2VEmbedder,{"bin_path": "models/wikipedia-pubmed-and-PMC-w2v.bin"}),
-    ("pacsum_bert", BertEmbedder,
-     {"bert_config_path": "models/pacssum_models/bert_config.json",
-      "bert_model_path": "models/pacssum_models/pytorch_model_finetuned.bin",
-      "bert_tokenizer": "bert-base-uncased",
-      }
-    ),
-    ("st_bert_base", SentTransformersEmbedder,
-         {"model": "bert-base-nli-mean-tokens"}
-        ),
-    ("st_roberta_large", SentTransformersEmbedder,
-         {"model": "roberta-large-nli-mean-tokens"}
-        ),
+    # ("pacsum_bert", BertEmbedder,
+    #  {"bert_config_path": "models/pacssum_models/bert_config.json",
+    #   "bert_model_path": "models/pacssum_models/pytorch_model_finetuned.bin",
+    #   "bert_tokenizer": "bert-base-uncased",
+    #   }
+    # ),
+    # ("st_bert_base", SentTransformersEmbedder,
+    #      {"model": "bert-base-nli-mean-tokens"}
+    #     ),
+    # ("st_roberta_large", SentTransformersEmbedder,
+    #      {"model": "roberta-large-nli-mean-tokens"}
+    #     ),
 ]
 SIMILARITIES = [
     ("cos", CosSimilarity, {}),

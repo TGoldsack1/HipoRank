@@ -14,10 +14,18 @@ for fp in data_fps:
   out_docs = open(fp.replace(".json", ".txt"), "w")
 
   for inst_dict in data:
-    doc = inst_dict['abstract'] +  [item for sublist in inst_dict['sections'] for item in sublist]
+    sections = inst_dict['sections']
+    doc = inst_dict['abstract'] +  [item for sublist in sections for item in sublist]
     summ = inst_dict['summary']
 
-    out_docs.write(json.dumps({"article_id": inst_dict['id'], "article_text": doc, "abstract_text": summ}))
+    out_docs.write(json.dumps({
+      "article_id": inst_dict['id'], 
+      "article_text": doc, 
+      "abstract_text": summ,
+      "sections": sections,
+      "section_names": inst_dict['headings'],
+      "labels": []
+      }))
     out_docs.write("\n")
 
   out_docs.close()
